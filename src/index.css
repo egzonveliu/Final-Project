@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-gray-100 font-syne;
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-dark-900 font-bold px-6 py-3 rounded text-sm tracking-wide
+           transition-all hover:opacity-80 hover:-translate-y-px active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-white/20 text-white/70 font-medium px-6 py-3 rounded text-sm
+           tracking-wide transition-all hover:border-accent/40 hover:text-accent;
+  }
+
+  .card {
+    @apply bg-dark-700 border border-white/[0.07] rounded-lg p-6
+           transition-all hover:border-white/[0.12];
+  }
+
+  .input {
+    @apply w-full bg-dark-600 border border-white/10 rounded px-4 py-3 text-sm
+           text-white placeholder-white/30 focus:outline-none focus:border-accent/50
+           transition-colors;
+  }
+
+  .label {
+    @apply block text-xs font-mono text-white/40 tracking-widest uppercase mb-2;
+  }
+
+  .section-tag {
+    @apply font-mono text-xs text-accent tracking-widest uppercase flex items-center gap-2
+           before:content-[''] before:w-6 before:h-px before:bg-accent;
+  }
+
+  .page-title {
+    @apply text-4xl md:text-5xl font-extrabold text-white/95 leading-tight tracking-tight;
+  }
+}
+
+.pulse-dot {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
