@@ -99,8 +99,8 @@ function ContactForm() {
       <div>
         <label className="label">Message *</label>
         <textarea
-          {...register('message', { required: 'Mesazhi është i detyrueshëm', minLength: { value: 20, message: 'Minimum 20 karaktere' } })}
-          placeholder="Përshkruaj si mund të bashkëpunojmë..."
+          {...register('message', { required: 'Mesazhi eshte i detyrueshem', minLength: { value: 20, message: 'Minimum 20 karaktere' } })}
+          placeholder="Pershkruaj si mund te bashkepunojme..."
           rows={5}
           className="input resize-none"
         />
@@ -108,12 +108,12 @@ function ContactForm() {
       </div>
 
       <button type="submit" disabled={mutation.isPending} className="btn-primary flex items-center justify-center gap-2">
-        {mutation.isPending ? 'Duke dërguar...' : <><Send size={14} /> Dërgo Mesazhin</>}
+        {mutation.isPending ? 'Duke dërguar...' : <><Send size={14} /> Dergo Mesazhin</>}
       </button>
 
       {mutation.isSuccess && (
         <div className="flex items-center gap-2 text-sm text-green-400 bg-green-400/10 border border-green-400/20 rounded p-3">
-          <CheckCircle size={16} /> Mesazhi u dërgua! Do të kthehem sa më shpejt.
+          <CheckCircle size={16} /> Mesazhi u dergua! Do te kthehem sa me shpejt.
         </div>
       )}
     </form>
