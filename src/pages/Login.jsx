@@ -37,8 +37,8 @@ export default function Login() {
           {/* Demo credentials hint */}
           <div className="mb-6 p-3 bg-accent/[0.05] border border-accent/15 rounded text-xs text-gray-500 dark:text-white/50 font-mono">
             <p className="text-accent/80 mb-1">Demo credentials:</p>
-            <p>Email: egzon@example.com</p>
-            <p>Password: 123456</p>
+            <p>Email: egzon@demo.com</p>
+            <p>Password: demo123</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">

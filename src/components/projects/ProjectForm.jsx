@@ -1,17 +1,23 @@
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { useEffect } from 'react'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 const CATEGORIES = ['Web', 'Mobile', 'Other']
 
 export default function ProjectForm({ onSubmit, defaultValues, onCancel }) {
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
-    defaultValues: defaultValues || { title: '', description: '', tech: '', link: '', category: 'Web', featured: false },
+  const { register, handleSubmit, reset, control, formState: { errors, isSubmitting } } = useForm({
+    defaultValues: defaultValues || {
+      title: '', description: '', tech: '', link: '',
+      category: 'Web', featured: false, createdAt: new Date(),
+    },
   })
 
   useEffect(() => {
     if (defaultValues) reset({
       ...defaultValues,
       tech: Array.isArray(defaultValues.tech) ? defaultValues.tech.join(', ') : defaultValues.tech,
+      createdAt: defaultValues.createdAt ? new Date(defaultValues.createdAt) : new Date(),
     })
   }, [defaultValues, reset])
 
@@ -19,6 +25,9 @@ export default function ProjectForm({ onSubmit, defaultValues, onCancel }) {
     onSubmit({
       ...data,
       tech: data.tech.split(',').map(t => t.trim()).filter(Boolean),
+      createdAt: data.createdAt instanceof Date
+        ? data.createdAt.toISOString().split('T')[0]
+        : data.createdAt,
     })
   }
 
@@ -63,16 +72,36 @@ export default function ProjectForm({ onSubmit, defaultValues, onCancel }) {
           </select>
         </div>
         <div>
-          <label className="label">GitHub / Live Link</label>
-          <input
-            {...register('link', {
-              pattern: { value: /^https?:\/\/.+/, message: 'URL e vlefshme (https://...)' }
-            })}
-            placeholder="https://github.com/..."
-            className="input"
+          <label className="label">Project Date *</label>
+          <Controller
+            name="createdAt"
+            control={control}
+            rules={{ required: 'Data është e detyrueshme' }}
+            render={({ field }) => (
+              <DatePicker
+                selected={field.value}
+                onChange={field.onChange}
+                dateFormat="yyyy-MM-dd"
+                maxDate={new Date()}
+                placeholderText="Zgjidh datën"
+                className="input w-full"
+              />
+            )}
           />
-          {errors.link && <p className="text-red-400 text-xs mt-1">{errors.link.message}</p>}
+          {errors.createdAt && <p className="text-red-400 text-xs mt-1">{errors.createdAt.message}</p>}
         </div>
+      </div>
+
+      <div>
+        <label className="label">GitHub / Live Link</label>
+        <input
+          {...register('link', {
+            pattern: { value: /^https?:\/\/.+/, message: 'URL e vlefshme (https://...)' }
+          })}
+          placeholder="https://github.com/..."
+          className="input"
+        />
+        {errors.link && <p className="text-red-400 text-xs mt-1">{errors.link.message}</p>}
       </div>
 
       <div className="flex items-center gap-3">
