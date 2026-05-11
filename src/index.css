@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-dark-900 text-gray-100 font-syne;
+    @apply bg-white text-gray-900 font-syne dark:bg-dark-900 dark:text-gray-100;
   }
 
   * {
@@ -19,23 +19,25 @@
   }
 
   .btn-outline {
-    @apply border border-white/20 text-white/70 font-medium px-6 py-3 rounded text-sm
-           tracking-wide transition-all hover:border-accent/40 hover:text-accent;
+    @apply border border-gray-300 dark:border-white/20 text-gray-600 dark:text-white/70 
+           font-medium px-6 py-3 rounded text-sm tracking-wide transition-all 
+           hover:border-accent/40 hover:text-accent;
   }
 
   .card {
-    @apply bg-dark-700 border border-white/[0.07] rounded-lg p-6
-           transition-all hover:border-white/[0.12];
+    @apply bg-gray-50 dark:bg-dark-700 border border-gray-200 dark:border-white/[0.07] 
+           rounded-lg p-6 transition-all hover:border-gray-300 dark:hover:border-white/[0.12];
   }
 
   .input {
-    @apply w-full bg-dark-600 border border-white/10 rounded px-4 py-3 text-sm
-           text-white placeholder-white/30 focus:outline-none focus:border-accent/50
-           transition-colors;
+    @apply w-full bg-gray-100 dark:bg-dark-600 border border-gray-200 dark:border-white/10 
+           rounded px-4 py-3 text-sm text-gray-900 dark:text-white 
+           placeholder-gray-400 dark:placeholder-white/30 focus:outline-none 
+           focus:border-accent/50 transition-colors;
   }
 
   .label {
-    @apply block text-xs font-mono text-white/40 tracking-widest uppercase mb-2;
+    @apply block text-xs font-mono text-gray-500 dark:text-white/40 tracking-widest uppercase mb-2;
   }
 
   .section-tag {
@@ -44,7 +46,8 @@
   }
 
   .page-title {
-    @apply text-4xl md:text-5xl font-extrabold text-white/95 leading-tight tracking-tight;
+    @apply text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white/95 
+           leading-tight tracking-tight;
   }
 }
 

@@ -25,8 +25,8 @@ export default function Register() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link to="/" className="font-mono text-sm text-accent tracking-widest">EV.dev</Link>
-          <h1 className="text-3xl font-extrabold text-white mt-3 mb-2">Create Account</h1>
-          <p className="text-sm text-white/40">Register to access the dashboard</p>
+          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mt-3 mb-2">Create Account</h1>
+          <p className="text-sm text-gray-500 dark:text-white/40">Register to access the dashboard</p>
         </div>
 
         <div className="card">
@@ -89,7 +89,7 @@ export default function Register() {
           </form>
         </div>
 
-        <p className="text-center text-sm text-white/30 mt-4">
+        <p className="text-center text-sm text-gray-400 dark:text-white/30 mt-4">
           Already have an account?{' '}
           <Link to="/login" className="text-accent hover:text-accent/70 transition-colors">Login</Link>
         </p>

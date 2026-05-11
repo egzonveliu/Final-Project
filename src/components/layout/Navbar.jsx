@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { Menu, X, LogOut, LayoutDashboard } from 'lucide-react'
+import { Menu, X, LogOut, LayoutDashboard, Sun, Moon } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
+import { useTheme } from '../../context/ThemeContext'
 import toast from 'react-hot-toast'
 
 const links = [
@@ -14,6 +15,7 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const { isAuthenticated, user, logout } = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
 
   const handleLogout = useCallback(() => {
@@ -48,6 +50,9 @@ export default function Navbar() {
 
         {/* Auth buttons */}
         <div className="hidden md:flex items-center gap-3">
+          <button onClick={toggleTheme} className="text-white/50 hover:text-white transition-colors">
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
           {isAuthenticated ? (
             <>
               <Link to="/dashboard" className="flex items-center gap-2 text-sm text-white/60 hover:text-accent transition-colors">

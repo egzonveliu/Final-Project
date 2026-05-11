@@ -16,8 +16,8 @@ function ContactInfo() {
     <div className="flex flex-col gap-4">
       <div>
         <p className="section-tag mb-3">Contact</p>
-        <h2 className="text-2xl font-bold text-white/90 mb-3">Get in Touch</h2>
-        <p className="text-sm text-white/45 leading-relaxed">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white/90 mb-3">Get in Touch</h2>
+        <p className="text-sm text-gray-500 dark:text-white/45 leading-relaxed">
           I'm open to internship opportunities and junior front-end developer roles. Feel free to reach out!
         </p>
       </div>
@@ -29,13 +29,13 @@ function ContactInfo() {
               <Icon size={16} className="text-accent" />
             </div>
             <div>
-              <p className="font-mono text-[10px] text-white/30 tracking-widest uppercase">{label}</p>
+              <p className="font-mono text-[10px] text-gray-400 dark:text-white/30 tracking-widest uppercase">{label}</p>
               {href ? (
-                <a href={href} target="_blank" rel="noreferrer" className="text-sm text-white/70 hover:text-accent transition-colors">
+                <a href={href} target="_blank" rel="noreferrer" className="text-sm text-gray-600 dark:text-white/70 hover:text-accent transition-colors">
                   {value}
                 </a>
               ) : (
-                <p className="text-sm text-white/70">{value}</p>
+                <p className="text-sm text-gray-600 dark:text-white/70">{value}</p>
               )}
             </div>
           </div>
@@ -47,7 +47,7 @@ function ContactInfo() {
           <span className="w-2 h-2 rounded-full bg-accent pulse-dot" />
           <span className="font-mono text-xs text-accent tracking-widest">OPEN TO OPPORTUNITIES</span>
         </div>
-        <p className="text-sm text-white/45">Actively looking for internships or junior front-end developer positions.</p>
+        <p className="text-sm text-gray-500 dark:text-white/45">Actively looking for internships or junior front-end developer positions.</p>
       </div>
     </div>
   )
@@ -67,7 +67,7 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(d => mutation.mutate(d))} className="card flex flex-col gap-4">
-      <h3 className="font-bold text-white text-lg mb-2">Send a Message</h3>
+      <h3 className="font-bold text-gray-900 dark:text-white text-lg mb-2">Send a Message</h3>
 
       <div className="grid grid-cols-2 gap-4">
         <div>

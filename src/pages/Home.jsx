@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { ArrowRight, Download } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 function HeroSection() {
   const textRef = useRef(null)
@@ -19,14 +19,14 @@ function HeroSection() {
       </p>
       <h1
         ref={textRef}
-        className={`text-6xl md:text-8xl font-extrabold leading-none tracking-tight text-white/95 mb-4 transition-all duration-700 delay-100 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        className={`text-6xl md:text-8xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white/95 mb-4 transition-all duration-700 delay-100 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       >
-        Egzon<br /><span className="text-white/30">Veliu</span>
+        Egzon<br /><span className="text-gray-400 dark:text-white/30">Veliu</span>
       </h1>
-      <p className={`text-xl text-white/40 mb-6 transition-all duration-700 delay-200 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <p className={`text-xl text-gray-500 dark:text-white/40 mb-6 transition-all duration-700 delay-200 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         Junior Front-End Developer
       </p>
-      <p className={`max-w-xl text-base text-white/55 leading-relaxed mb-10 transition-all duration-700 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <p className={`max-w-xl text-base text-gray-600 dark:text-white/55 leading-relaxed mb-10 transition-all duration-700 delay-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         Building modern, responsive, and functional web applications with React and Tailwind CSS.
         Combining technical skills with a practical, detail-oriented mindset.
       </p>
@@ -36,11 +36,11 @@ function HeroSection() {
         </Link>
         <Link to="/contact" className="btn-outline">Get in Touch</Link>
       </div>
-      <div className="grid grid-cols-3 gap-8 border-t border-white/[0.07] pt-8 max-w-sm">
+      <div className="grid grid-cols-3 gap-8 border-t border-gray-200 dark:border-white/[0.07] pt-8 max-w-sm">
         {[{ n: '8+', l: 'Tech Skills' }, { n: '6+', l: 'Years Exp.' }, { n: '2025', l: 'Diploma' }].map(s => (
           <div key={s.l}>
-            <p className="text-2xl font-extrabold text-white/95">{s.n}</p>
-            <p className="font-mono text-[11px] text-white/30 tracking-widest uppercase mt-1">{s.l}</p>
+            <p className="text-2xl font-extrabold text-gray-900 dark:text-white/95">{s.n}</p>
+            <p className="font-mono text-[11px] text-gray-400 dark:text-white/30 tracking-widest uppercase mt-1">{s.l}</p>
           </div>
         ))}
       </div>
@@ -53,10 +53,10 @@ function SkillsPreview() {
   const topSkills = useMemo(() => skills.slice(0, 6), [skills])
 
   return (
-    <section className="border-t border-white/[0.06] py-16">
+    <section className="border-t border-gray-200 dark:border-white/[0.06] py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-white/90">Tech Stack</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white/90">Tech Stack</h2>
           <Link to="/about" className="font-mono text-xs text-accent/70 hover:text-accent transition-colors tracking-widest">
             VIEW ALL →
           </Link>
@@ -65,10 +65,10 @@ function SkillsPreview() {
           {topSkills.map(skill => (
             <div key={skill.id} className="card hover:border-accent/20 group">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">{skill.name}</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{skill.name}</span>
                 <span className="font-mono text-xs text-accent/60">{skill.level}%</span>
               </div>
-              <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
+              <div className="h-1 bg-gray-200 dark:bg-white/[0.06] rounded-full overflow-hidden">
                 <div
                   className="h-full bg-accent/70 rounded-full transition-all duration-700"
                   style={{ width: `${skill.level}%` }}
@@ -89,17 +89,17 @@ function TimelineSection() {
     { date: '2018', title: "Bachelor's in Economics", sub: 'University of Prishtina', desc: 'Analytical and business foundation complementing technical development.' },
   ]
   return (
-    <section className="border-t border-white/[0.06] py-16">
+    <section className="border-t border-gray-200 dark:border-white/[0.06] py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl font-bold text-white/90 mb-10">Experience & Education</h2>
-        <div className="relative pl-6 border-l border-white/[0.08] flex flex-col gap-10">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white/90 mb-10">Experience & Education</h2>
+        <div className="relative pl-6 border-l border-gray-200 dark:border-white/[0.08] flex flex-col gap-10">
           {items.map((item) => (
             <div key={item.title} className="relative">
-              <div className="absolute -left-[25px] top-1 w-3 h-3 rounded-full bg-accent border-2 border-dark-900 shadow-[0_0_0_1px_rgba(124,255,164,0.3)]" />
-              <p className="font-mono text-xs text-white/30 mb-1 tracking-widest">{item.date}</p>
-              <h3 className="font-bold text-white mb-1">{item.title}</h3>
+              <div className="absolute -left-[25px] top-1 w-3 h-3 rounded-full bg-accent border-2 border-white dark:border-dark-900 shadow-[0_0_0_1px_rgba(124,255,164,0.3)]" />
+              <p className="font-mono text-xs text-gray-400 dark:text-white/30 mb-1 tracking-widest">{item.date}</p>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-1">{item.title}</h3>
               <p className="text-sm text-accent/70 mb-2">{item.sub}</p>
-              <p className="text-sm text-white/45 leading-relaxed">{item.desc}</p>
+              <p className="text-sm text-gray-500 dark:text-white/45 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
