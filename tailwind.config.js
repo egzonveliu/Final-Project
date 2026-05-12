@@ -9,7 +9,7 @@ export default {
         mono: ['DM Mono', 'monospace'],
       },
       colors: {
-        accent: '#7cffa4',
+        accent: '#38bdf8',
         dark: {
           900: '#0a0a0f',
           800: '#0f0f16',

@@ -14,7 +14,7 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { isAuthenticated, user, logout } = useAuth()
+  const { isAuthenticated, logout } = useAuth()
   const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
 
@@ -27,11 +27,10 @@ export default function Navbar() {
   const toggle = useCallback(() => setOpen(o => !o), [])
 
   return (
-    <nav className="sticky top-0 z-50 bg-dark-900/90 backdrop-blur-md border-b border-white/[0.06]">
+    <nav className="sticky top-0 z-50 bg-white/90 dark:bg-dark-900/90 backdrop-blur-md border-b border-gray-200 dark:border-white/[0.06]">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <Link to="/" className="font-mono text-sm text-accent tracking-widest">Egzon's Portfolio</Link>
 
-        {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           {links.map(l => (
             <li key={l.to}>
@@ -39,7 +38,7 @@ export default function Navbar() {
                 to={l.to}
                 end
                 className={({ isActive }) =>
-                  `text-sm tracking-wide transition-colors ${isActive ? 'text-accent' : 'text-white/50 hover:text-white'}`
+                  `text-sm tracking-wide transition-colors ${isActive ? 'text-accent' : 'text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white'}`
                 }
               >
                 {l.label}
@@ -48,17 +47,20 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Auth buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <button onClick={toggleTheme} className="text-white/50 hover:text-white transition-colors">
+          <button
+            onClick={toggleTheme}
+            className="text-gray-400 dark:text-white/40 hover:text-accent transition-colors p-1"
+            aria-label="Toggle theme"
+          >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           {isAuthenticated ? (
             <>
-              <Link to="/dashboard" className="flex items-center gap-2 text-sm text-white/60 hover:text-accent transition-colors">
+              <Link to="/dashboard" className="flex items-center gap-2 text-sm text-gray-500 dark:text-white/60 hover:text-accent transition-colors">
                 <LayoutDashboard size={15} /> Dashboard
               </Link>
-              <button onClick={handleLogout} className="flex items-center gap-2 text-sm text-white/40 hover:text-red-400 transition-colors">
+              <button onClick={handleLogout} className="flex items-center gap-2 text-sm text-gray-400 dark:text-white/40 hover:text-red-400 transition-colors">
                 <LogOut size={14} /> Logout
               </button>
             </>
@@ -67,26 +69,30 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile toggle */}
-        <button className="md:hidden text-white/60 hover:text-white" onClick={toggle} aria-label="Toggle menu">
+        <button className="md:hidden text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white" onClick={toggle} aria-label="Toggle menu">
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-dark-800 border-t border-white/[0.05] px-6 py-4">
+        <div className="md:hidden bg-white dark:bg-dark-800 border-t border-gray-100 dark:border-white/[0.05] px-6 py-4">
           <ul className="flex flex-col gap-4">
             {links.map(l => (
               <li key={l.to}>
                 <NavLink to={l.to} end onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `text-sm ${isActive ? 'text-accent' : 'text-white/60'}`
+                    `text-sm ${isActive ? 'text-accent' : 'text-gray-500 dark:text-white/60'}`
                   }>
                   {l.label}
                 </NavLink>
               </li>
             ))}
+            <li>
+              <button onClick={toggleTheme} className="text-sm text-gray-400 dark:text-white/40 flex items-center gap-2">
+                {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+                {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              </button>
+            </li>
             {isAuthenticated
               ? <li><Link to="/dashboard" onClick={() => setOpen(false)} className="text-sm text-accent">Dashboard</Link></li>
               : <li><Link to="/login" onClick={() => setOpen(false)} className="text-sm text-accent">Login</Link></li>
